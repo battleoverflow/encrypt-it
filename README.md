@@ -5,9 +5,9 @@ A simple command line program that will create a password for you, and then give
 Current supported encryptions:
 
 - [x] Base64
-- [] Caesar Cipher
-- [] ROT13 Algorithm
-- [] RSA Cipher
-- [] Vignere Cipher
+- [ ] Caesar Cipher
+- [ ] ROT13 Algorithm
+- [ ] RSA Cipher
+- [ ] Vignere Cipher
 
 Pull requests are welcome! :)
