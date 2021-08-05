@@ -4,10 +4,17 @@ A simple command line program that will create a password for you, and then give
 
 Current supported encryptions:
 
-- [x] Base64
-- [ ] Caesar Cipher
-- [ ] ROT13 Algorithm
-- [ ] RSA Cipher
-- [ ] Vignere Cipher
+- Base64
+  - [x] Encoding
+- Caesar Cipher
+  - [ ] Encoding
+- ROT13 Algorithm
+  - [ ] Encoding
+- RSA Cipher
+  - [ ] Encoding
+- Vignere Cipher
+  - [ ] Encoding
+- Reverse Cipher
+  - [x] Encoding
 
 Pull requests are welcome! :)
