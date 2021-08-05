@@ -3,6 +3,23 @@ import base64
 
 characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
+def banner(r, g, b, text):
+    return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
+
+print(banner(255, 0, 0, '''
+  ______                             _     _____ _   
+ |  ____|                           | |   |_   _| |  
+ | |__   _ __   ___ _ __ _   _ _ __ | |_    | | | |_ 
+ |  __| | '_ \ / __| '__| | | | '_ \| __|   | | | __|
+ | |____| | | | (__| |  | |_| | |_) | |_   _| |_| |_ 
+ |______|_| |_|\___|_|   \__, | .__/ \__| |_____|\__|
+                          __/ | |                    
+                         |___/|_|
+'''))
+
+print("Open Source: https://github.com/GhostlyPy/encrypt-it\n"
+      "Creator: GhostlyPy (https://github.com/GhostlyPy)\n")
+
 while 1:
     password_length = int(input("How long should your password be: "))
     password = ""
