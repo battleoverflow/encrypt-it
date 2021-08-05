@@ -1,3 +1,4 @@
+import base64
 import random
 
 characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -11,8 +12,11 @@ while 1:
     print("Here is your password: " + password)
     break
 
-def encrypt_reverse():
-    endPoint = password[::-1]
-    print("Reversed Cipher: " + endPoint)
+def encrypt_base32():
+    data_string_32 = password
+    data_bytes_32 = data_string_32.encode("utf-8")
+    encoded_data_32 = base64.b32encode(data_bytes_32)
 
-encrypt_reverse()
+    print("Base32 Encoded: ", encoded_data_32)
+
+encrypt_base32()

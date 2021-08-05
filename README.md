@@ -6,6 +6,8 @@ Current supported encryptions:
 
 - Base64
   - [x] Encoding
+- Base32
+  - [x] Encoding
 - Caesar Cipher
   - [ ] Encoding
 - ROT13 Algorithm

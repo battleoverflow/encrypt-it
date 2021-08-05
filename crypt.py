@@ -36,22 +36,25 @@ def encrypt_base64():
     data_bytes = data_string.encode("utf-8")
     encoded_data = base64.b64encode(data_bytes)
 
-    print("Encoded: ", encoded_data)
+    print("Base 64 Encoded: ", encoded_data)
 
 def encrypt_reverse():
-    endPoint = ''
-    i = len(password) - 1
-    
-    while i >= 0:
-        endPoint = endPoint + password[i]
-        i = i - 1
+    endPoint = password[::-1]
     print("Reversed Cipher: " + endPoint)
+
+def encrypt_base32():
+    data_string_32 = password
+    data_bytes_32 = data_string_32.encode("utf-8")
+    encoded_data_32 = base64.b32encode(data_bytes_32)
+
+    print("Base32 Encoded: ", encoded_data_32)
 
 if encrypt_me == "yes":
     print("[1] => Base64\n"
           "[2] => Caesar Cipher (In Development)\n"
           "[3] => ROT13 (In Development)\n"
-          "[4] => Reversed Cipher\n")
+          "[4] => Reversed Cipher\n"
+          "[5] => Base32\n")
     options = input("Please choose which encryption method you would like to use: ")
 
     if options == "1":
@@ -64,6 +67,8 @@ if encrypt_me == "yes":
         # encrypt_rot13()
     elif options == "4":
         encrypt_reverse()
+    elif options == "5":
+        encrypt_base32()
     else:
         print("We don't currently support that type of encryption!")
 
