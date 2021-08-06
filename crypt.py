@@ -1,6 +1,12 @@
 import random
 import base64
 
+#########################################################
+# Project: https://github.com/GhostlyPy/encrypt-it      #
+# Creator: GhostlyPy                                    #
+# Version: 1.0.4                                        #
+#########################################################
+
 a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
 def banner(r, g, b, text):
@@ -23,38 +29,47 @@ print("Open Source: https://github.com/GhostlyPy/encrypt-it\n"
 while True:
     password_length = int(input("How long should your password be: "))
     password = ""
+    # Loops through the provided characters to create a random pasword
     for x in range(0, password_length):
         password_chars = random.choice(a)
         password = password + password_chars
+    # Prints randomly generated password
     print("Here is your password: " + password)
     break
 
+# Encryption begins
 encrypt_me = input("Would you like to encrypt your password (yes/no): ")
 
+# Base64 encryption
 def encrypt_base64():
-    data_string = password
-    data_bytes = data_string.encode("utf-8")
-    encoded_data = base64.b64encode(data_bytes)
+    bs64_string = password
+    bs64_bytes = bs64_string.encode("utf-8")
+    bs64_encoded_passwd = base64.b64encode(bs64_bytes)
+    
+    print("Base 64 Encoded: ", bs64_encoded_passwd)
 
-    print("Base 64 Encoded: ", encoded_data)
-
+# Reverse cipher
 def encrypt_reverse():
     endPoint = password[::-1]
+    
     print("Reversed Cipher: " + endPoint)
 
+# Base32 encryption
 def encrypt_base32():
-    data_string_32 = password
-    data_bytes_32 = data_string_32.encode("utf-8")
-    encoded_data_32 = base64.b32encode(data_bytes_32)
+    bs32_string = password
+    bs32_bytes = bs32_string.encode("utf-8")
+    bs32_encoded_passwd = base64.b32encode(bs32_bytes)
 
-    print("Base32 Encoded: ", encoded_data_32)
+    print("Base32 Encoded: ", bs32_encoded_passwd)
 
+# Begin encryption options
 if encrypt_me == "yes":
     print("[1] => Base64\n"
           "[2] => Reversed Cipher\n"
           "[3] => Base32\n")
     options = input("Please choose which encryption method you would like to use: ")
 
+    # Choose encryption method
     if options == "1":
         encrypt_base64()
     elif options == "2":
