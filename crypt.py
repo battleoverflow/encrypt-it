@@ -1,7 +1,7 @@
 import random
 import base64
 
-characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
 def banner(r, g, b, text):
     return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
@@ -20,11 +20,11 @@ print(banner(255, 0, 0, '''
 print("Open Source: https://github.com/GhostlyPy/encrypt-it\n"
       "Creator: GhostlyPy (https://github.com/GhostlyPy)\n")
 
-while 1:
+while True:
     password_length = int(input("How long should your password be: "))
     password = ""
     for x in range(0, password_length):
-        password_chars = random.choice(characters)
+        password_chars = random.choice(a)
         password = password + password_chars
     print("Here is your password: " + password)
     break
@@ -51,23 +51,15 @@ def encrypt_base32():
 
 if encrypt_me == "yes":
     print("[1] => Base64\n"
-          "[2] => Caesar Cipher (In Development)\n"
-          "[3] => ROT13 (In Development)\n"
-          "[4] => Reversed Cipher\n"
-          "[5] => Base32\n")
+          "[2] => Reversed Cipher\n"
+          "[3] => Base32\n")
     options = input("Please choose which encryption method you would like to use: ")
 
     if options == "1":
         encrypt_base64()
     elif options == "2":
-        print("Coming soon!")
-        # encrypt_caesar()
-    elif options == "3":
-        print("Coming soon!")
-        # encrypt_rot13()
-    elif options == "4":
         encrypt_reverse()
-    elif options == "5":
+    elif options == "3":
         encrypt_base32()
     else:
         print("We don't currently support that type of encryption!")
