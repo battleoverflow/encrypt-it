@@ -1,10 +1,11 @@
 import random
 import base64
+from __version__ import v3rsion
 
 #########################################################
 # Project: https://github.com/GhostlyPy/encrypt-it      #
 # Creator: GhostlyPy                                    #
-# Version: 1.0.4                                        #
+# Version: 1.0.5                                        #
 #########################################################
 
 a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -24,10 +25,11 @@ print(banner(255, 0, 0, '''
 '''))
 
 print("Open Source: https://github.com/GhostlyPy/encrypt-it\n"
-      "Creator: GhostlyPy (https://github.com/GhostlyPy)\n")
+      "Creator: GhostlyPy (https://github.com/GhostlyPy)")
+print("Version: " + v3rsion + "\n")
 
 while True:
-    password_length = int(input("How long should your password be: "))
+    password_length = int(input("How many characters will your password be: "))
     password = ""
     # Loops through the provided characters to create a random pasword
     for x in range(0, password_length):
