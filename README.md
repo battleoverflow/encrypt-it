@@ -4,7 +4,7 @@ A simple command line program that will create a password for you, and then give
 
 ## Example Syntax
 ```bash
-python3 crypt.pt
+python3 crypt.py
 
   ______                             _     _____ _   
  |  ____|                           | |   |_   _| |  
