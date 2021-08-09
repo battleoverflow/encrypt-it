@@ -2,6 +2,8 @@
 
 A simple command line program that will create a password for you, and then give you the option to encrypt it with a specific method.
 
+Video Version: https://www.youtube.com/watch?v=mC-to0vgC5M
+
 <img src="https://raw.githubusercontent.com/GhostlyPy/encrypt-it/main/encrypt-it-tn.jpg" alt="Encrypt It Banner"><br>
 
 ## Example Syntax
