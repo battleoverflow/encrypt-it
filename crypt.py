@@ -3,8 +3,8 @@ import base64
 from __version__ import v3rsion
 
 #########################################################
-# Project: https://github.com/GhostlyPy/encrypt-it      #
-# Creator: GhostlyPy                                    #
+# Project: https://github.com/Hifumi-Sec/encrypt-it      #
+# Creator: Hifumi-Sec                                    #
 # Version: 1.0.5                                        #
 #########################################################
 
@@ -24,8 +24,8 @@ print(banner(255, 0, 0, '''
                          |___/|_|
 '''))
 
-print("Open Source: https://github.com/GhostlyPy/encrypt-it\n"
-      "Creator: GhostlyPy (https://github.com/GhostlyPy)")
+print("Open Source: https://github.com/Hifumi-Sec/encrypt-it\n"
+      "Creator: Hifumi-Sec (https://github.com/Hifumi-Sec)")
 print("Version: " + v3rsion + "\n")
 
 while True:

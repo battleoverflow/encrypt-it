@@ -1,6 +1,6 @@
 #########################################################
-# Project: https://github.com/GhostlyPy/encrypt-it      #
-# Creator: GhostlyPy                                    #
+# Project: https://github.com/Hifumi-Sec/encrypt-it      #
+# Creator: Hifumi-Sec                                    #
 # Version: 1.0.5                                        #
 #########################################################
 
