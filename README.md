@@ -1,8 +1,6 @@
 # Encrypt It
 
-A simple command line program that will create a password for you, and then give you the option to encrypt it with a specific method.
-
-<img src="https://raw.githubusercontent.com/Hifumi-Sec/encrypt-it/main/encrypt-it-tn.jpg" alt="Encrypt It Banner"><br>
+A simple command line program that will create a password for you, and then give you the option to encrypt it using various methods.
 
 ## Installation
 ```python
