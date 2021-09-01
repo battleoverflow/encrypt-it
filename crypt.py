@@ -1,14 +1,14 @@
 import random
 import base64
+from cryptography.fernet import Fernet
+import rsa
 from __version__ import v3rsion
 
 #########################################################
-# Project: https://github.com/Hifumi-Sec/encrypt-it      #
-# Creator: Hifumi-Sec                                    #
-# Version: 1.0.5                                        #
+# Project: https://github.com/Hifumi-Sec/encrypt-it     #
+# Creator: Hifumi Sec                                   #
+# Version: 1.0.8                                        #
 #########################################################
-
-a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
 def banner(r, g, b, text):
     return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
@@ -25,8 +25,12 @@ print(banner(255, 0, 0, '''
 '''))
 
 print("Open Source: https://github.com/Hifumi-Sec/encrypt-it\n"
-      "Creator: Hifumi-Sec (https://github.com/Hifumi-Sec)")
+      "Creator: Hifumi Sec (https://github.com/Hifumi-Sec)")
 print("Version: " + v3rsion + "\n")
+
+# Characters used for the randomized password
+a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
 
 while True:
     password_length = int(input("How many characters will your password be: "))
@@ -36,11 +40,14 @@ while True:
         password_chars = random.choice(a)
         password = password + password_chars
     # Prints randomly generated password
-    print("Here is your password: " + password)
+    print(f"\nHere is your password: {password}")
     break
 
 # Encryption begins
-encrypt_me = input("Would you like to encrypt your password (yes/no): ")
+encrypt_me = input("\nWould you like to encrypt your password (yes/no): ")
+
+# Asks user if they would like to save password & encryption in a file (.txt)
+file_push = input("\nWould you like your password saved in a file (yes/no): ")
 
 # Base64 encryption
 def encrypt_base64():
@@ -48,13 +55,31 @@ def encrypt_base64():
     bs64_bytes = bs64_string.encode("utf-8")
     bs64_encoded_passwd = base64.b64encode(bs64_bytes)
     
-    print("Base 64 Encoded: ", bs64_encoded_passwd)
+    print("\nBase 64 Encoded: ", bs64_encoded_passwd)
+
+    if file_push == "yes":
+        f = open("base64.txt", "w")
+        f.write(f"Password: {password}\n")
+        f.write("Encoded Password: " + str(bs64_encoded_passwd))
+        f.close()
+        print("\nYour password was successfully saved!")
+    elif file_push == "no":
+        print("\nYour password was not saved.")
 
 # Reverse cipher
 def encrypt_reverse():
     endPoint = password[::-1]
     
-    print("Reversed Cipher: " + endPoint)
+    print(f"\nReversed Cipher: {endPoint}")
+
+    if file_push == "yes":
+        f = open("reverse.txt", "w")
+        f.write(f"Password: {password}\n")
+        f.write(f"Reversed Password: {endPoint}")
+        f.close()
+        print("\nYour password was successfully saved!")
+    elif file_push == "no":
+        print("\nYour password was not saved.")
 
 # Base32 encryption
 def encrypt_base32():
@@ -62,13 +87,72 @@ def encrypt_base32():
     bs32_bytes = bs32_string.encode("utf-8")
     bs32_encoded_passwd = base64.b32encode(bs32_bytes)
 
-    print("Base32 Encoded: ", bs32_encoded_passwd)
+    print("\nBase32 Encoded: ", bs32_encoded_passwd)
+
+    if file_push == "yes":
+        f = open("base32.txt", "w")
+        f.write(f"Password: {password}\n")
+        f.write("Encoded Password: " + str(bs32_encoded_passwd))
+        f.close()
+        print("\nYour password was successfully saved!")
+    elif file_push == "no":
+        print("\nYour password was not saved.")
+
+# Fernet encryption
+def encrypt_fernet():
+    # Encrypt the password
+    fernet_pass = password
+
+    # Generates key
+    fernetKey = Fernet.generate_key()
+    fernet = Fernet(fernetKey)
+    encryptedFernetPass = fernet.encrypt(fernet_pass.encode())
+
+    print("\nEncrypted Password: ", encryptedFernetPass)
+    print(banner(255, 0, 0, '\nDO NOT SHARE THIS!'))
+    print("Encryption Key: ", fernetKey)
+
+    if file_push == "yes":
+        f = open("fernet.txt", "w")
+        f.write(f"Password: {password}\n")
+        f.write("Encrypted Password: " + str(encryptedFernetPass) + "\n")
+        f.write("Encryption Key: " + str(fernetKey) + "\n")
+        f.close()
+        print("\nYour password was successfully saved!")
+    elif file_push == "no":
+        print("\nYour password was not saved.")
+
+# RSA encryption
+def encrypt_rsa():
+    # key_size = int(input("Please choose a key size for your RSA encryption: "))
+    publicRSAKey, privateRSAKey = rsa.newkeys(1024)
+    rsa_pass = password
+    rsaEncryptedPass = rsa.encrypt(rsa_pass.encode(), publicRSAKey)
+    
+    print("Encrypted Password (Public Key | 1024): ", rsaEncryptedPass)
+    print("Encryption Key (Private Key | 1024): ", privateRSAKey)
+
+    # Used for testing RSA decryption
+    # rsaDecryptedPass = rsa.decrypt(rsaEncryptedPass, privateRSAKey).decode()
+    # print("Decrypted Password: ", rsaDecryptedPass)
+
+    if file_push == "yes":
+        f = open("rsa_keys.txt", "w")
+        f.write(f"Password: {password}\n")
+        f.write("Encrypted Password (Public Key | 1024): " + str(rsaEncryptedPass) + "\n")
+        f.write("Encryption Key (Private Key | 1024): " + str(privateRSAKey) + "\n")
+        f.close()
+        print("\nYour password was successfully saved!")
+    elif file_push == "no":
+        print("\nYour password was not saved.")
 
 # Begin encryption options
 if encrypt_me == "yes":
-    print("[1] => Base64\n"
+    print("[1] => Base64 Encoding\n"
           "[2] => Reversed Cipher\n"
-          "[3] => Base32\n")
+          "[3] => Base32 Encoding\n"
+          "[4] => Fernet Encryption\n"
+          "[5] => RSA Encryption\n")
     options = input("Please choose which encryption method you would like to use: ")
 
     # Choose encryption method
@@ -78,11 +162,22 @@ if encrypt_me == "yes":
         encrypt_reverse()
     elif options == "3":
         encrypt_base32()
+    elif options == "4":
+        encrypt_fernet()
+    elif options == "5":
+        encrypt_rsa()
     else:
-        print("We don't currently support that type of encryption!")
+        print("We don't currently support that type of encryption!\n")
 
 elif encrypt_me == "no":
-    print("Have a good day!")
-    print("Don't forget your password: " + password)
+    if file_push == "yes":
+        f = open("password.txt", "w")
+        f.write(f"Password: {password}")
+        f.close()
+        print("Your password was successfully saved!")
+    elif file_push == "no":
+        print("Your password was not saved.")
+    print("Have a good day!\n")
+    print(f"Don't forget your password: {password}")
 else:
     print("Please choose yes or no")

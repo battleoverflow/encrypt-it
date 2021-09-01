@@ -3,7 +3,7 @@ from setuptools import setup
 from __version__ import v3rsion
 
 required = [
-  'base64', 'random'
+  'base64', 'random', 'cryptography', 'rsa'
 ]
 
 setup(

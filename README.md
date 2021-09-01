@@ -1,12 +1,17 @@
-# encrypt-it
+# Encrypt It
 
 A simple command line program that will create a password for you, and then give you the option to encrypt it with a specific method.
 
 <img src="https://raw.githubusercontent.com/Hifumi-Sec/encrypt-it/main/encrypt-it-tn.jpg" alt="Encrypt It Banner"><br>
 
+## Installation
+```python
+pip install -r requirements.txt
+```
+
 ## Example Syntax
 ```bash
-python3 crypt.py
+$ python3 crypt.py
 
   ______                             _     _____ _   
  |  ____|                           | |   |_   _| |  
@@ -18,25 +23,16 @@ python3 crypt.py
                          |___/|_|
                          
 Open Source: https://github.com/Hifumi-Sec/encrypt-it
-Creator: Hifumi-Sec (https://github.com/Hifumi-Sec)
-Version: 1.0.5
+Creator: Hifumi Sec (https://github.com/Hifumi-Sec)
+Version: 1.0.8
 ```
 
 Current supported encryptions:
 
-- Base64
-  - [x] Encoding
-- Base32
-  - [x] Encoding
-- Caesar Cipher
-  - [ ] Encoding
-- ROT13 Algorithm
-  - [ ] Encoding
-- RSA Cipher
-  - [ ] Encoding
-- Vignere Cipher
-  - [ ] Encoding
-- Reverse Cipher
-  - [x] Encoding
+- [x] Base64
+- [x] Base32
+- [x] Reverse Cipher
+- [x] Fernet Encryption
+- [x] RSA Encryption
 
 Pull requests are welcome! :)
