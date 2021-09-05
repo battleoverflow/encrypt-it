@@ -1,36 +1,44 @@
 # Encrypt It
 
-A simple command line program that will create a password for you, and then give you the option to encrypt it using various methods.
+<p style="text-align: center">🔐 Simple password generator offering various encryption methods.</p>
+
+<img src="assets/encrypt-it-banner.png" alt="Encrypt It banner">
 
 ## Installation
+
 ```python
 pip install -r requirements.txt
 ```
 
 ## Example Syntax
-```bash
-$ python3 crypt.py
 
-  ______                             _     _____ _   
- |  ____|                           | |   |_   _| |  
- | |__   _ __   ___ _ __ _   _ _ __ | |_    | | | |_ 
+```bash
+$ python3 crypt.py (Linux/Mac)
+> py crypt.py (Windows)
+
+  ______                             _     _____ _
+ |  ____|                           | |   |_   _| |
+ | |__   _ __   ___ _ __ _   _ _ __ | |_    | | | |_
  |  __| | '_ \ / __| '__| | | | '_ \| __|   | | | __|
- | |____| | | | (__| |  | |_| | |_) | |_   _| |_| |_ 
+ | |____| | | | (__| |  | |_| | |_) | |_   _| |_| |_
  |______|_| |_|\___|_|   \__, | .__/ \__| |_____|\__|
-                          __/ | |                    
+                          __/ | |
                          |___/|_|
-                         
+
 Open Source: https://github.com/Hifumi-Sec/encrypt-it
 Creator: Hifumi Sec (https://github.com/Hifumi-Sec)
-Version: 1.0.8
+Version: 1.1.0
 ```
 
-Current supported encryptions:
+## Pull Requests
+
+All pull requests are welcome! This is a small solo project, but I am 100% open to allowing any and all contributions.
+
+### Supported Encryptions/Ciphers
 
 - [x] Base64
 - [x] Base32
 - [x] Reverse Cipher
 - [x] Fernet Encryption
 - [x] RSA Encryption
-
-Pull requests are welcome! :)
+- [x] Caesar Cipher

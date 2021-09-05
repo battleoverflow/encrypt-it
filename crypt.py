@@ -7,7 +7,7 @@ from __version__ import v3rsion
 #########################################################
 # Project: https://github.com/Hifumi-Sec/encrypt-it     #
 # Creator: Hifumi Sec                                   #
-# Version: 1.0.8                                        #
+# Version: 1.1.0                                        #
 #########################################################
 
 def banner(r, g, b, text):
@@ -24,13 +24,14 @@ print(banner(255, 0, 0, '''
                          |___/|_|
 '''))
 
+print("🔐 Simple password generator offering various encryption methods.\n")
+
 print("Open Source: https://github.com/Hifumi-Sec/encrypt-it\n"
       "Creator: Hifumi Sec (https://github.com/Hifumi-Sec)")
 print("Version: " + v3rsion + "\n")
 
 # Characters used for the randomized password
 a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-
 
 while True:
     password_length = int(input("How many characters will your password be: "))
@@ -135,12 +136,45 @@ def encrypt_rsa():
     # Used for testing RSA decryption
     # rsaDecryptedPass = rsa.decrypt(rsaEncryptedPass, privateRSAKey).decode()
     # print("Decrypted Password: ", rsaDecryptedPass)
-
+    
     if file_push == "yes":
         f = open("rsa_keys.txt", "w")
         f.write(f"Password: {password}\n")
         f.write("Encrypted Password (Public Key | 1024): " + str(rsaEncryptedPass) + "\n")
         f.write("Encryption Key (Private Key | 1024): " + str(privateRSAKey) + "\n")
+        f.close()
+        print("\nYour password was successfully saved!")
+    elif file_push == "no":
+        print("\nYour password was not saved.")
+
+# Caesar Cipher (this should not have been so difficult)
+# Please ignore the terrible var names, my world ended the second I started this function
+def encrypt_caesar():
+    shift = int(input("Please enter your shift number: "))
+    iteratePass = password
+    caesar_cipher = ""
+    for caesar_end in iteratePass:
+        if caesar_end.isupper():
+            begin_shift = ord(caesar_end) - ord('A')
+            caesar_shift = (begin_shift + shift) % 26 + ord('A')
+            new_caesar = chr(caesar_shift)
+            caesar_cipher += new_caesar
+        elif caesar_end.islower():
+            begin_shift = ord(caesar_end) - ord('a') 
+            caesar_shift = (begin_shift + shift) % 26 + ord('a')
+            new_caesar = chr(caesar_shift)
+            caesar_cipher += new_caesar
+        else:
+            caesar_cipher += caesar_end
+
+    print(f"Cipher: {caesar_cipher}")
+    print(f"Shift Used: {shift}")
+
+    if file_push == "yes":
+        f = open("caesar.txt", "w")
+        f.write(f"Password: {password}\n")
+        f.write(f"Caesar Cipher: {caesar_cipher}\n")
+        f.write(f"Shift: {shift}")
         f.close()
         print("\nYour password was successfully saved!")
     elif file_push == "no":
@@ -152,7 +186,8 @@ if encrypt_me == "yes":
           "[2] => Reversed Cipher\n"
           "[3] => Base32 Encoding\n"
           "[4] => Fernet Encryption\n"
-          "[5] => RSA Encryption\n")
+          "[5] => RSA Encryption\n"
+          "[6] => Caesar Cipher\n")
     options = input("Please choose which encryption method you would like to use: ")
 
     # Choose encryption method
@@ -166,6 +201,8 @@ if encrypt_me == "yes":
         encrypt_fernet()
     elif options == "5":
         encrypt_rsa()
+    elif options == "6":
+        encrypt_caesar()
     else:
         print("We don't currently support that type of encryption!\n")
 
