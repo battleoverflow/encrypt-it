@@ -1,6 +1,6 @@
 # Encrypt It
 
-<p style="text-align: center">🔐 Simple password generator offering various encryption methods.</p>
+<p align=center>🔐 Simple password generator offering various encryption methods.</p>
 
 <img src="assets/encrypt-it-banner.png" alt="Encrypt It banner">
 
