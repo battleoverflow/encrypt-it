@@ -1,7 +1,6 @@
-import random
-import base64
+import random, base64, rsa
 from cryptography.fernet import Fernet
-import rsa
+import jwt as j
 
 ###############################################################
 #   ______                             _     _____ _          # 
@@ -14,7 +13,7 @@ import rsa
 #                          |___/|_|                           #
 ###############################################################
 
-VERSION = "1.1.8"
+VERSION = "1.1.9"
 
 print(f'''
   ______                             _     _____ _   
@@ -192,6 +191,24 @@ class Encrypt:
         elif file_push == "n":
             print("\nYour password was not saved.")
 
+    def jwt_token_encode(self):
+        set_secret = input("Set JWT secret: ")
+
+        encoded_msg = j.encode({
+            'payload': password
+        }, str(set_secret), algorithm='HS256')
+
+        print(f"\nEncoded JWT Token: {encoded_msg}")
+
+        if file_push == "y":
+            with open("jwt.txt", "w") as f:
+                f.write(f"Password: {self.password}\n")
+                f.write("Encoded JWT Token: {0}".format(str(encoded_msg)))
+
+            print("\nYour password was successfully saved!")
+        elif file_push == "n":
+            print("\nYour password was not saved.")
+
 
 # Begin encryption options
 if encrypt_me == "y":
@@ -200,7 +217,8 @@ if encrypt_me == "y":
         "[3] => Base32 Encoding\n"
         "[4] => Fernet Encryption\n"
         "[5] => RSA Encryption\n"
-        "[6] => Caesar Cipher\n")
+        "[6] => Caesar Cipher\n"
+        "[7] => JWT Token\n")
 
     E = Encrypt()
     
@@ -219,19 +237,21 @@ if encrypt_me == "y":
         E.encrypt_rsa()
     elif options == "6":
         E.caesar_cipher()
+    elif options == "7":
+        E.jwt_token_encode()
     else:
         print("We don't currently support that type of encryption!\n")
 
 elif encrypt_me == "n":
     if file_push == "y":
         with open("password.txt", "w") as f:
-            f.write(f"Password: {self.password}")
+            f.write(f"Password: {password}")
 
         print("Your password was successfully saved!")
     elif file_push == "n":
         print("Your password was not saved.")
     
     print("Have a good day!\n")
-    print(f"Don't forget your password: {self.password}")
+    print(f"Don't forget your password: {password}")
 else:
     print("Please choose y or n")
