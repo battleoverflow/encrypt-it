@@ -11,6 +11,7 @@ import jwt as j
 #  |______|_| |_|\___|_|   \__, | .__/ \__| |_____|\__|       #
 #                           __/ | |                           #
 #                          |___/|_|                           #
+#                                                             #
 ###############################################################
 
 VERSION = "1.1.9"
@@ -28,8 +29,8 @@ print(f'''
                         {VERSION}
 ''')
 
-print("Open Source: https://github.com/Hifumi1337/encrypt-it\n"
-      "Creator: Hifumi1337 (https://github.com/Hifumi1337)\n")
+print("Open Source: https://github.com/azazelm3dj3d/encrypt-it\n"
+      "Creator: azazelm3dj3d (https://github.com/azazelm3dj3d)\n")
 
 # Characters used for the randomized password
 a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"

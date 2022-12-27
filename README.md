@@ -5,7 +5,7 @@
 <img src="assets/encrypt-it-banner.png" alt="Encrypt It banner">
 
 ## Description
-Encrypt It is a simple password generator program that runs in the command line, offerring mulitple encoding and encryption methods.
+Encrypt It is a simple password generator program that runs in the command line, offering multiple encoding and encryption methods.
 
 ## Installation
 ```bash
