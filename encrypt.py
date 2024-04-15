@@ -29,8 +29,8 @@ print(f'''
                         {VERSION}
 ''')
 
-print("Open Source: https://github.com/azazelm3dj3d/encrypt-it\n"
-      "Creator: azazelm3dj3d (https://github.com/azazelm3dj3d)\n")
+print("Open Source: https://github.com/battleoverflow/encrypt-it\n"
+      "Creator: battleoverflow (https://github.com/battleoverflow)\n")
 
 # Characters used for the randomized password
 a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"

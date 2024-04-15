@@ -1,6 +1,6 @@
 # Encrypt It
 
-## 🔐 Simple password generator offering various encryption & encoding methods.
+## 🔐 Password Generator 🔐
 
 <img src="assets/encrypt-it-banner.png" alt="Encrypt It banner">
 
